@@ -1,7 +1,7 @@
 {
   "name": "x-desktop",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.1.0",
   "type": "commonjs",
   "scripts": {
     "dev": "vite",
@@ -10,10 +10,9 @@
   },
   "dependencies": {
     "nanoid": "^5.0.4",
-    "pinia": "^2.1.7",
     "pinyin-pro": "^3.18.6",
     "vue": "^3.3.11",
-    "vue-grid-layout": "3.0.0-beta1"
+    "vue-draggable-plus": "^0.3.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",

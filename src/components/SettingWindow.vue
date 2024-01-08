@@ -1,6 +1,6 @@
 <template>
-    <div id="setting-window"
-        class="w-96 p-3 text-gray-700 bg-slate-100 absolute left-0 top-0 bottom-0 m-4 backdrop-blur-sm rounded-xl  bg-slate-200/90">
+    <div id="setting-window" :style="{ transform: isShowSettingWindow ? 'translateX(0)' : 'translateX(-110%)' }"
+        class="transition-all w-96 p-3 text-gray-700 bg-slate-100 absolute left-0 top-0 bottom-0 m-4 backdrop-blur-sm rounded-xl  bg-slate-200/90">
         <div class="font-bold h-14 flex justify-center items-center text-xl">设置</div>
         <div class="join join-vertical w-full">
             <div class="collapse collapse-arrow join-item border border-slate-200">
@@ -37,5 +37,11 @@
 </template>
 
 <script setup>
+import { inject } from 'vue'
+const isShowSettingWindow = inject('isShowSettingWindow')
+
+// function toggleSettingWindow() {
+//     isShowSettingWindow.value = !isShowSettingWindow.value;
+// }
 </script>
 <style scoped></style>

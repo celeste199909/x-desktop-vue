@@ -1,8 +1,6 @@
 <template>
     <div class="icon w-[140px] h-[140px] p-4 flex flex-col justify-start items-center select-none cursor-pointer"
-        @mousedown.left="handleMouseDown($event)"
-        @mouseup.left="handleMouseUp(icon,$event)"
-        >
+        @mousedown.left="handleMouseDown($event)" @mouseup.left="handleMouseUp(icon, $event)">
         <img :src="icon.iconImage" alt="" srcset="" class="w-14 h-14 m-4">
         <div class="line-clamp-2 text-center text-sm">{{ icon.showName }}</div>
     </div>
@@ -25,13 +23,13 @@ const position = {
 }
 
 // 处理打开图标
-function handleMouseDown(event){
+function handleMouseDown(event) {
     console.log('handleMouseDown');
     position.x = event.clientX;
     position.y = event.clientY;
 }
 
-function handleMouseUp(icon,event){
+function handleMouseUp(icon, event) {
     const x = event.clientX;
     const y = event.clientY;
     if (Math.abs(x - position.x) < 1 && Math.abs(y - position.y) < 1) {
@@ -41,4 +39,12 @@ function handleMouseUp(icon,event){
 }
 
 </script>
-<style scoped></style>
+<style scoped>
+.icon.sortable-ghost {
+    opacity: 0;
+}
+.icon:hover {
+    /* filter: drop-shadow(0 0 1rem rgba(222, 218, 145, 0.749)); */
+    transform: scale(1.1);
+}
+</style>

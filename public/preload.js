@@ -41,13 +41,14 @@ if (!desktopWindow) {
   desktopWindow = createDesktopWindow();
 }
 // 监听插件进入事件
-utools.onPluginEnter(({ code, type, payload, option }) => {
-  if (!desktopWindow) {
-    desktopWindow = createDesktopWindow();
-  } else {
-    showDesktop(desktopWindow);
-  }
-});
+// utools.onPluginEnter(({ code, type, payload, option }) => {
+//   console.log("onPluginEnter", code, type, payload, option);
+//   if (!desktopWindow) {
+//     desktopWindow = createDesktopWindow();
+//   } else {
+//     showDesktop(desktopWindow);
+//   }
+// });
 
 // 打开链接
 window.openUrl = function (url) {
@@ -69,9 +70,12 @@ window.exports = {
         enter: (action) => {
           console.log("进入插件", action);
            // action = { code, type, payload }
-           window.utools.hideMainWindow()
+          //  window.utools.hideMainWindow()
            // do some thing
           //  window.utools.outPlugin()
+          // showDesktop()
+          // desktopWindow.show();
+          showDesktop(desktopWindow);
         }  
      } 
   }
