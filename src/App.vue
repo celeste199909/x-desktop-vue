@@ -14,7 +14,7 @@ import { getDesktopLayout } from './functions/getDesktopLayout';
 // 数据
 const pages = ref([]);
 const currentPage = ref(0);
-const layout = getDesktopLayout();
+const layout = ref(getDesktopLayout());
 
 // 注入
 provide('currentPage', currentPage);
@@ -35,9 +35,9 @@ onBeforeMount(() => {
     // 获取原始图标数据，并处理成需要的格式
     const handleIcons = handleRawIcons(rawIcons);
     // 分页
-    pages.value = paginateArray(handleIcons, layout.pageCapacity);
+    pages.value = paginateArray(handleIcons, layout.value.pageCapacity);
     console.log("pages", pages.value);
-    console.log("pageCapacity", layout.pageCapacity);
+    console.log("pageCapacity", layout.value.pageCapacity);
   });
 });
 
