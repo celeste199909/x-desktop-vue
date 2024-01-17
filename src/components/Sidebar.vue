@@ -39,8 +39,26 @@
       <!-- 使用说明 -->
       <div class="item w-full my-4">
         <div class="mb-2 font-bold">使用说明</div>
-        <div class="my-4 text-blue-500 cursor-pointer" @click="handleClickManual">
-          查看
+        <div
+          class="my-4 text-blue-500 cursor-pointer"
+          @click="handleClickManual"
+        >
+          查看说明
+        </div>
+        <div class="my-4">
+          <div>如果觉得还不错，麻烦给个好评吧😭 ~</div>
+          <div>感谢！祝你新年快乐哈！🎉</div>
+        </div>
+      </div>
+      <!-- 清除本地缓存 -->
+      <div class="item w-full my-4">
+        <div class="mb-2 font-bold">本地缓存</div>
+        <div class="my-2">本地缓存保存了所有设置项和桌面图标的排序信息。</div>
+        <div
+          class="my-4 text-red-500 cursor-pointer"
+          @click="handleClickClearSetting"
+        >
+          清除
         </div>
       </div>
     </div>
@@ -58,10 +76,16 @@ import HideShortcutKey from "./widgets/sidebar/HideShortcutKey.vue";
 const isShowSidebar = inject("isShowSidebar");
 const setting = inject("setting");
 const utools = inject("utools");
+const init = inject("init");
 
 function handleClickManual() {
-  utools.shellOpenExternal("https://sourl.cn/dgwfig")
+  utools.shellOpenExternal("https://sourl.cn/dgwfig");
   window.hideDesk();
+}
+
+function handleClickClearSetting() {
+  utools.dbStorage.removeItem("setting");
+  init();
 }
 </script>
 <style scoped></style>

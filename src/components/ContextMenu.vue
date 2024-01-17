@@ -10,7 +10,7 @@
   >
     <template v-for="item in menuOptions" :key="item.name">
       <div
-        class="flex justify-start items-center text-slate-900  hover:bg-slate-400/70 dark:text-slate-200 dark:hover:bg-slate-600 px-4 py-2 rounded-lg cursor-pointer"
+        class="flex justify-start items-center text-slate-900 hover:bg-slate-400/70 dark:text-slate-200 dark:hover:bg-slate-600 px-4 py-2 rounded-lg cursor-pointer"
         v-if="item.enabled.includes(clickTargetType)"
         @click.left="item.handler($event)"
       >
@@ -36,6 +36,7 @@ const pages = inject("pages");
 const layout = inject("layout");
 const moveToPage = inject("moveToPage");
 const utools = inject("utools");
+const init = inject("init");
 // 点击的目标
 const clickTarget = ref(null);
 // const isClickXFolder = ref(false)
@@ -63,14 +64,21 @@ const menuOptions = ref([
     enabled: ["desktop", "other"],
     handler: handleClickSetting,
   },
+  {
+    name: "刷新",
+    enabled: ["desktop", "other"],
+    handler: handleClickRefresh,
+  },
 ]);
 // 打开图标
 function handleOpenIcon(event) {
-    console.log("打开图标",event);
-    const iconId = clickTarget.value.id.split("-")[2];
-    const icon = pages.value[currentPage.value].find((item) => item.id === iconId);
-    utools.shellOpenPath(icon.realPath)
-    window.hideDesk();
+  console.log("打开图标", event);
+  const iconId = clickTarget.value.id.split("-")[2];
+  const icon = pages.value[currentPage.value].find(
+    (item) => item.id === iconId
+  );
+  utools.shellOpenPath(icon.realPath);
+  window.hideDesk();
 }
 
 // 新建页面
@@ -99,6 +107,12 @@ function handleClickSetting(event) {
   event.stopPropagation();
   isShowContextMenu.value = false;
   isShowSidebar.value = true;
+}
+
+// 刷新
+function handleClickRefresh() {
+  console.log("刷新");
+  init();
 }
 
 // 监听鼠标右键

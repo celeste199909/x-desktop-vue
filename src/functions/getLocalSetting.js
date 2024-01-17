@@ -69,6 +69,7 @@ const defaultSetting = {
   ],
   bgOpacity: 50,
   hideShortcutKey: ["Control", ""],
+  sortInfo:[]
 };
 
 export function getLocalSetting() {
@@ -77,6 +78,7 @@ export function getLocalSetting() {
     utools.dbStorage.setItem("setting", defaultSetting);
     return defaultSetting;
   }else {
+    console.log("localSetting", localSetting);
     return localSetting;
   }
 }

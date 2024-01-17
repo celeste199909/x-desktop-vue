@@ -14,7 +14,6 @@
       }"
       :animation="150"
       ghostClass="ghost"
-      ref="el"
       draggable=".draggable"
       v-model="pages[pageIndex]"
       :style="gridStyle"
@@ -22,13 +21,9 @@
       @end="onEnd"
       @move="onMove"
     >
-      <Application
-        v-for="item in pages[pageIndex]"
-        :key="item.id"
-        class="draggable"
-        :icon="item"
-        :place="'on-desktop'"
-      />
+      <div v-for="item in pages[pageIndex]" :key="item.id" class="draggable">
+        <Application :icon="item" :place="'on-desktop'" />
+      </div>
     </VueDraggable>
   </div>
 </template>
@@ -37,20 +32,16 @@
 import { inject, ref, defineProps, computed } from "vue";
 import { VueDraggable } from "vue-draggable-plus";
 import Application from "./icons/Application.vue";
-import XFolder from "./icons/XFolder.vue";
+// import XFolder from "./icons/XFolder.vue";
+import { useUpdateSortInfo } from "../composables/updateSortInfo.js";
+const { updateSortInfo } = useUpdateSortInfo();
 // props
 const props = defineProps({
   pageIndex: {
     type: Number,
     required: true,
   },
-  // pageData: {
-  //   type: Array,
-  //   required: true,
-  // },
 });
-
-// const page = computed(() => props.pageData);
 
 // 注入 来自 App.vue
 const currentPage = inject("currentPage");
@@ -119,6 +110,7 @@ function onStart(event) {
 function onEnd(event) {
   isDragging.value = false;
   console.log("pages.value", pages.value);
+  updateSortInfo();
 }
 </script>
 <style scoped>

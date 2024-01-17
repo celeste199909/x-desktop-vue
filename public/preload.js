@@ -45,7 +45,7 @@ function createDesktopWindow() {
       ipcRenderer.sendTo(desktopWindow.webContents.id, "init");
       showDesktop(desktopWindow);
       // 开发者工具
-      desktopWindow.webContents.openDevTools();
+      // desktopWindow.webContents.openDevTools();
       // 监听子窗口隐藏事件
       ipcRenderer.on("hideDesktop", (e, data) => {
         desktopWindow.hide();
@@ -57,9 +57,13 @@ function createDesktopWindow() {
 
 // 显示桌面
 function showDesktop(desktopWindow) {
-  utools.hideMainWindow();
+  // utools.hideMainWindow();
   // utools.outPlugin();
   desktopWindow.show();
+  setTimeout(() => {
+      utools.hideMainWindow();
+  }, 100);
+
 }
 
 // 工具
