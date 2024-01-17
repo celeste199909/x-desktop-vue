@@ -46,8 +46,8 @@ function getIconType(rawName) {
 }
 
 // 函数用于处理显示的名字获取搜索关键词
-function getSearchKeywords(showName) {
-  const keywords = [];
+export function getSearchKeywords(showName) {
+  let keywords = [];
   if (strContainsChinese(showName)) {
     // 如果是中文 1转换为拼音 2去除点 3并转换为小写： wei xin
     const searchingStr = pinyin(showName, { toneType: "none" })
@@ -63,6 +63,11 @@ function getSearchKeywords(showName) {
     keywords.push(...searchingStr.split(" ")); // 用空格分割成数组，扁平化数组，放入索引数组
     keywords.push(extractInitials(searchingStr)); // 提取首字母
   }
+  // 取出keywords中的重复项 和 空项
+  let set = new Set(keywords);
+  keywords = [...set];
+  keywords = keywords.filter((keyword) => keyword !== "");
+
   return keywords;
 }
 

@@ -8,17 +8,25 @@
   box-sizing: border-box;
 }
 html {
-  background-color: transparent !important;
+  /* background-color: transparent !important; */
 }
 body {
   margin: 0;
   padding: 0;
-  background-color: transparent !important;
+  /* background-color: transparent !important; */
+  background-image: url('./assets/wallpapers/mountains.jpg');
+  /* background-image: url('file:///C:/Users/celeste/Pictures/2h-media-oUw0fIRzhr4-unsplash.jpg');  */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #app {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.922);
+  background-color: rgba(0, 0, 0, 0.8);
+  /* background-color: liner-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)); */
+  /* filter: blur(10px); */
+  /* backdrop-filter: blur(20px); */
 }
 
 /* 定义滚动条的样式 */

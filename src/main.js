@@ -1,18 +1,13 @@
 import { createApp } from "vue";
 import "./style.css";
 import App from "./App.vue";
+// 插件
+import Toast from "./plugins/toast";
+// 工具库
 
 const app = createApp(App);
-
-app.provide('utools', utools);
-app.mount("#app");
-
-// 监听alt键
-window.addEventListener("keydown", (e) => {
-  console.log(e.key);
-  if (e.key === "Control") {
-    window.hideDesk();
-  }
+app.provide("utools", utools);
+app.use(Toast, {
+  duration: 3000, // 可以在这里配置默认的显示时间
 });
-
-// console.log("utools main.js", utools);
+app.mount("#app");

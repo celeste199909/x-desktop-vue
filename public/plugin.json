@@ -1,8 +1,8 @@
 {
   "pluginName": "X桌面",
-  "description": " X 桌面是一个简单的桌面，可以快速帮你打开应用，双击 Ctrl 即可唤出桌面, 单击 Ctrl 键隐藏",
+  "description": " windows 桌面解决方案。双击 Ctrl 即可唤出桌面, 单击 Ctrl 键隐藏。",
   "author": "无限蔚蓝",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "preload": "preload.js",
   "logo": "logo.png",
   "platform": ["win32"],
@@ -10,12 +10,12 @@
     "single": true,
     "height": 1
   },
-  "features": [
+  "features": [  
     {
       "code": "desktop",
       "icon": "logo.png",
       "platform": ["win32"],
-      "cmds": ["X桌面vue"]
+      "cmds": ["X桌面"]
     }
   ]
 }
