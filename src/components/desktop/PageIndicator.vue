@@ -9,8 +9,8 @@
 <script setup>
 import { inject } from 'vue'
 // 组合式函数
-import { useWheelToPage } from "../../composables/desktop/wheelToPage.js";
-import { useMoveToPage } from "../../composables/desktop/moveToPage.js";
+import { useWheelToPage } from "@/composables/desktop/wheelToPage.js";
+import { useMoveToPage } from "@/composables/desktop/moveToPage.js";
 
 
 const pages = inject("pages");

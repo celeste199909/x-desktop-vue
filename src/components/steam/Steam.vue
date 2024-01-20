@@ -41,7 +41,7 @@ const { x, y, sourceType } = useMouse();
 <template>
   <div
     id="steam"
-    class="relative h-screen w-screen justify-center items-center flex flex-row overflow-hidden"
+    class="steam relative h-screen w-screen justify-center items-center flex flex-row overflow-hidden"
   >
     >
     <VueDraggable

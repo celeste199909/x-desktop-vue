@@ -7,20 +7,28 @@
   <Browser v-if="currentModule === 'browser'" />
   <!-- 模块栏 -->
   <ModuleBar />
+  <!-- 右键菜单 -->
+  <ContextMenu />
+  <!-- 侧边栏 -->
+  <Sidebar />
 </template>
 
 <script setup>
 import { onBeforeMount, ref, provide } from "vue";
 // 组件
-import Desktop from "./components/desktop/Desktop.vue";
-import Steam from "./components/steam/Steam.vue";
-import Browser from "./components/browser/Browser.vue";
-import ModuleBar from "./components/widgets/ModuleBar.vue";
+import Desktop from "@/components/desktop/Desktop.vue";
+import Steam from "@/components/steam/Steam.vue";
+import Browser from "@/components/browser/Browser.vue";
+// 部件
+import ContextMenu from "@/widgets/contextmenu/ContextMenu.vue";
+import Sidebar from "@/widgets/sidebar/Sidebar.vue";
+import ModuleBar from "@/widgets/ModuleBar.vue";
+
 // 工具
-import { handleRawIcons } from "./functions/handleRawIcons";
-import { paginateArray } from "./functions/paginateArray";
-import { getDesktopLayout } from "./functions/getDesktopLayout";
-import { getLocalSetting } from "./functions/getLocalSetting";
+import { handleRawIcons } from "@/functions/handleRawIcons";
+import { paginateArray } from "@/functions/paginateArray";
+import { getDesktopLayout } from "@/functions/getDesktopLayout";
+import { getLocalSetting } from "@/functions/getLocalSetting";
 // 组合式函数 composables
 
 // 第三方工具库

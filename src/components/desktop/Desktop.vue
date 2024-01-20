@@ -15,8 +15,6 @@
     <PageIndicator />
     <!-- 左右检测区域 -->
     <SideArea />
-    <!-- 右键菜单 -->
-    <ContextMenu />
     <!-- 侧边栏-->
     <Sidebar />
     <!-- 快速搜索 -->
@@ -30,12 +28,11 @@ import { inject, onBeforeMount } from "vue";
 import Page from "./Page.vue";
 import PageIndicator from "./PageIndicator.vue";
 import SideArea from "./SideArea.vue";
-import ContextMenu from "../widgets/contextmenu/ContextMenu.vue";
-import Sidebar from "../widgets/sidebar/Sidebar.vue";
+import Sidebar from "@/widgets/sidebar/Sidebar.vue";
 import QuickSearch from "./QuickSearch.vue";
 // 组合式函数
-import { useWheelToPage } from "../../composables/desktop/wheelToPage.js";
-import { useMoveToPage } from "../../composables/desktop/moveToPage.js";
+import { useWheelToPage } from "@/composables/desktop/wheelToPage.js";
+import { useMoveToPage } from "@/composables/desktop/moveToPage.js";
 
 const pages = inject("pages");
 const currentPage = inject("currentPage");

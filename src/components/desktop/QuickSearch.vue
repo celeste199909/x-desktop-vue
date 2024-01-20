@@ -9,7 +9,7 @@
 <script setup>
 import { inject, onMounted, onUnmounted, ref } from "vue";
 // 组合式函数
-import { useSelectSearchTarget } from "../../composables/desktop/selectSearchTarget.js";
+import { useSelectSearchTarget } from "@/composables/desktop/selectSearchTarget.js";
 
 const pages = inject("pages");
 const isOnQuickSearchMode = inject("isOnQuickSearchMode");

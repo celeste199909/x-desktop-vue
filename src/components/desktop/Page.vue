@@ -31,12 +31,12 @@
 <script setup>
 import { inject, ref, defineProps} from "vue";
 import { VueDraggable } from "vue-draggable-plus";
-import Application from "../icons/Application.vue";
+import Application from "@/widgets/icons/Application.vue";
 // import XFolder from "./icons/XFolder.vue";
 // 组合式函数
-import { useUpdateSortInfo } from "../../composables/desktop/updateSortInfo.js";
-import { useWheelToPage } from "../../composables/desktop/wheelToPage.js";
-import { useMoveToPage } from "../../composables/desktop/moveToPage.js";
+import { useUpdateSortInfo } from "@/composables/desktop/updateSortInfo.js";
+import { useWheelToPage } from "@/composables/desktop/wheelToPage.js";
+import { useMoveToPage } from "@/composables/desktop/moveToPage.js";
 
 const { updateSortInfo } = useUpdateSortInfo();
 
