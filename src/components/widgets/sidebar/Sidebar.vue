@@ -67,11 +67,11 @@
 
 <script setup>
 import { inject, ref } from "vue";
-import Theme from "./widgets/sidebar/Theme.vue";
-import BgColor from "./widgets/sidebar/BgColor.vue";
-import BgImage from "./widgets/sidebar/BgImage.vue";
-import BgOpacity from "./widgets/sidebar/BgOpacity.vue";
-import HideShortcutKey from "./widgets/sidebar/HideShortcutKey.vue";
+import Theme from "./Theme.vue";
+import BgColor from "./BgColor.vue";
+import BgImage from "./BgImage.vue";
+import BgOpacity from "./BgOpacity.vue";
+import HideShortcutKey from "./HideShortcutKey.vue";
 
 const isShowSidebar = inject("isShowSidebar");
 const setting = inject("setting");

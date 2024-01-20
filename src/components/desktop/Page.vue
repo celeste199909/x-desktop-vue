@@ -29,12 +29,17 @@
 </template>
 
 <script setup>
-import { inject, ref, defineProps, computed } from "vue";
+import { inject, ref, defineProps} from "vue";
 import { VueDraggable } from "vue-draggable-plus";
-import Application from "./icons/Application.vue";
+import Application from "../icons/Application.vue";
 // import XFolder from "./icons/XFolder.vue";
-import { useUpdateSortInfo } from "../composables/updateSortInfo.js";
+// 组合式函数
+import { useUpdateSortInfo } from "../../composables/desktop/updateSortInfo.js";
+import { useWheelToPage } from "../../composables/desktop/wheelToPage.js";
+import { useMoveToPage } from "../../composables/desktop/moveToPage.js";
+
 const { updateSortInfo } = useUpdateSortInfo();
+
 // props
 const props = defineProps({
   pageIndex: {
@@ -47,8 +52,11 @@ const props = defineProps({
 const currentPage = inject("currentPage");
 const pages = inject("pages");
 const layout = inject("layout");
-const moveToPage = inject("moveToPage");
 const isDragging = inject("isDragging");
+const currentModule = inject("currentModule");
+
+const { moveToPage } = useMoveToPage(pages, currentPage);
+useWheelToPage(pages, currentPage, moveToPage, currentModule);
 
 // app容器 grid 布局
 const gridStyle = ref({

@@ -8,22 +8,19 @@
 
 <script setup>
 import { inject } from 'vue'
+// 组合式函数
+import { useWheelToPage } from "../../composables/desktop/wheelToPage.js";
+import { useMoveToPage } from "../../composables/desktop/moveToPage.js";
 
-// const props = defineProps({
-//     moveToPage: {
-//         type: Function,
-//         required: true
-//     }
-// })
 
-const currentPage = inject('currentPage')
-const pages = inject('pages')
-const moveToPage = inject('moveToPage')
+const pages = inject("pages");
+const currentPage = inject("currentPage");
+const currentModule = inject("currentModule");
 
-// function switchPage(index) {
-//     console.log("switchPage", index);
-//     currentPage.value = index
-// }
+const { moveToPage } = useMoveToPage(pages, currentPage);
+useWheelToPage(pages, currentPage, moveToPage, currentModule);
+
+
 
 </script>
 <style scoped></style>

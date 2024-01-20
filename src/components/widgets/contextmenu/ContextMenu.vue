@@ -23,18 +23,28 @@
 import { computed, inject, reactive, ref } from "vue";
 import { nanoid } from "nanoid";
 
-import { getSearchKeywords } from "../functions/handleRawIcons";
-import showToast from "./widgets/toast/index";
+import { getSearchKeywords } from "../../../functions/handleRawIcons.js";
+import showToast from "../toast/index";
+
+// composable
+import { useWheelToPage } from "../../../composables/desktop/wheelToPage.js";
+import { useMoveToPage } from "../../../composables/desktop/moveToPage.js";
+
+
+const pages = inject("pages");
+const currentPage = inject("currentPage");
+const currentModule = inject("currentModule");
+
+const { moveToPage } = useMoveToPage(pages, currentPage);
+useWheelToPage(pages, currentPage, moveToPage, currentModule);
+
 
 // 右键菜单
 const isShowContextMenu = inject("isShowContextMenu");
 const isShowSidebar = inject("isShowSidebar");
 const contextMenuPosition = ref({ x: 0, y: 0 });
 // 当前页面
-const currentPage = inject("currentPage");
-const pages = inject("pages");
 const layout = inject("layout");
-const moveToPage = inject("moveToPage");
 const utools = inject("utools");
 const init = inject("init");
 // 点击的目标
@@ -50,6 +60,16 @@ const menuOptions = ref([
     handler: handleOpenIcon,
   },
   {
+    name: "编辑",
+    enabled: ["icon"],
+    handler: ()=>{},
+  },
+  {
+    name: "隐藏图标",
+    enabled: ["icon"],
+    handler: ()=>{},
+  },
+  {
     name: "新建页面",
     enabled: ["desktop", "other"],
     handler: handleClickNewPage,
@@ -58,6 +78,11 @@ const menuOptions = ref([
     name: "删除页面",
     enabled: ["desktop", "other"],
     handler: handleClickRemovePage,
+  },
+  {
+    name: "查看隐藏图标",
+    enabled: ["desktop", "other"],
+    handler: ()=>{},
   },
   {
     name: "设置",

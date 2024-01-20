@@ -6,8 +6,9 @@ export function useWheelToPage(
   pages,
   currentPage,
   moveToPage,
+  currentModule
 ) {
-  
+
   // 组合式函数可以随时更改其状态。
   function switchPage(e) {
     const isOnSidebar = e.path.some((item) => item.classList?.contains("sidebar"));
@@ -35,6 +36,9 @@ export function useWheelToPage(
   // 一个组合式函数也可以挂靠在所属组件的生命周期上
   // 来启动和卸载副作用
   onMounted(() => {
+    if(currentModule.value !== "desktop") {
+      return;
+    }
     window.addEventListener("wheel", switchPage)
   });
   onUnmounted(() => {

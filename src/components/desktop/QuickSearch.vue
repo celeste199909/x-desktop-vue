@@ -7,9 +7,9 @@
   </div>
 </template>
 <script setup>
-import { computed } from "vue";
 import { inject, onMounted, onUnmounted, ref } from "vue";
-import { useSelectSearchTarget } from "../../../composables/selectSearchTarget.js";
+// 组合式函数
+import { useSelectSearchTarget } from "../../composables/desktop/selectSearchTarget.js";
 
 const pages = inject("pages");
 const isOnQuickSearchMode = inject("isOnQuickSearchMode");

@@ -1,12 +1,15 @@
 import { ref, onMounted, onUnmounted, inject, computed } from "vue";
+// composable
+import { useMoveToPage } from "./moveToPage.js";
 
 // 按照惯例，组合式函数名以“use”开头
 export function useSelectSearchTarget(timer) {
   const pages = inject("pages");
   const utools = inject("utools");
   const currentPage = inject("currentPage");
-  const moveToPage = inject("moveToPage");
   const isOnQuickSearchMode = inject("isOnQuickSearchMode");
+
+  const { moveToPage } = useMoveToPage(pages, currentPage);
 
   const selectedTargetIndex = ref(0);
   const searchTargetList = computed(() => {
@@ -20,8 +23,6 @@ export function useSelectSearchTarget(timer) {
     });
     return list;
   });
-
-  console.log("useSelectSearchTarget pages", pages);
 
   //  切换选中的搜索目标
   window.addEventListener("keydown", (e) => {
@@ -37,7 +38,7 @@ export function useSelectSearchTarget(timer) {
     // 重置计时器
     clearTimeout(timer.value);
     timer.value = setTimeout(() => {
-        isOnQuickSearchMode.value = false;
+      isOnQuickSearchMode.value = false;
     }, 6000);
     // 如果是下箭头，切换到下一个搜索目标
     if (e.key === "ArrowDown") {
